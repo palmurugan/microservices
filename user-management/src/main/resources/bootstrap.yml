@@ -1,0 +1,9 @@
+spring:
+  profiles: dev
+  cloud:
+    config:
+      fail-fast: false
+      uri: http://localhost:8888
+      name: UserManagement
+      profile: dev
+      label: master
