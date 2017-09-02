@@ -1,13 +1,3 @@
 spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/ptracker?useUnicode=true&characterEncoding=utf8&useSSL=false
-    username: root
-    password: root
-  jpa:
-    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-    database: MYSQL
-    show-sql: false
-    properties:
-      hibernate.cache.use_second_level_cache: false
-      hibernate.cache.use_query_cache: false
-      hibernate.generate_statistics: true
+  application:
+    name: UserManagement
