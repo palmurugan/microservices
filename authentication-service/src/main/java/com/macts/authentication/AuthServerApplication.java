@@ -1,11 +1,10 @@
-package com.macts.users;
+package com.macts.authentication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.embedded.undertow.UndertowEmbeddedServletContainerFactory;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * 
@@ -14,10 +13,10 @@ import org.springframework.context.annotation.Bean;
  */
 
 @SpringBootApplication
-public class UserManagementApplication extends SpringBootServletInitializer {
+public class AuthServerApplication extends WebMvcConfigurerAdapter {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UserManagementApplication.class, args);
+		SpringApplication.run(AuthServerApplication.class, args);
 	}
 
 	@Bean
@@ -25,10 +24,4 @@ public class UserManagementApplication extends SpringBootServletInitializer {
 		UndertowEmbeddedServletContainerFactory factory = new UndertowEmbeddedServletContainerFactory();
 		return factory;
 	}
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(UserManagementApplication.class);
-	}
-
 }

@@ -10,6 +10,7 @@ pTracker : a microservice architechture project which will explain all microserv
 5) ELK - Elastic, Logstash, Kibana
 6) Hystrix - Service to Service Call
 7) Ribbon - Load Balancer
+8) Liquibase - Database source control
 
 Note : Used all netflix components
 

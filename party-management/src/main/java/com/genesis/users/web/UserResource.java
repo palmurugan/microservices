@@ -1,4 +1,4 @@
-package com.macts.users.web;
+package com.genesis.users.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
