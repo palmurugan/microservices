@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: UserManagement
+liquibase:
+  enabled: true
+  change-log: classpath:/liquibase/db-changelog-master.xml
