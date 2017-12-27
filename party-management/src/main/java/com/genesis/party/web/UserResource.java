@@ -1,4 +1,4 @@
-package com.genesis.users.web;
+package com.genesis.party.web;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

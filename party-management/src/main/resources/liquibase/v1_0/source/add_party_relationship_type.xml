@@ -1,0 +1,31 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+	<changeSet id="create_party_relationship_type" author="pmurugan">
+		<createTable tableName="PARTY_RELATIONSHIP_TYPE">
+			<column name="PARTY_RELATIONSHIP_TYPE_ID" type="int" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false"/>
+			</column>
+			<column name="NAME" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="CREATED_BY" type="varchar(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="CREATED_DATE" type="datetime">
+				<constraints nullable="false" />
+			</column>
+			<column name="UPDATED_BY" type="varchar(50)">
+				<constraints nullable="true" />
+			</column>
+			<column name="UPDATED_DATE" type="datetime">
+				<constraints nullable="true" />
+			</column>
+			<column name="STATUS" type="varchar(2)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+	</changeSet>
+</databaseChangeLog>
