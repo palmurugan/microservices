@@ -5,8 +5,9 @@
 
 	<changeSet id="create_party_relationship_type" author="pmurugan">
 		<createTable tableName="PARTY_RELATIONSHIP_TYPE">
-			<column name="PARTY_RELATIONSHIP_TYPE_ID" type="int" autoIncrement="true">
-				<constraints primaryKey="true" nullable="false"/>
+			<column name="PARTY_RELATIONSHIP_TYPE_ID" type="int"
+				autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
 			</column>
 			<column name="NAME" type="varchar(50)">
 				<constraints nullable="false" />

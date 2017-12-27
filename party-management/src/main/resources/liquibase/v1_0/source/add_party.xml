@@ -9,7 +9,8 @@
 				<constraints primaryKey="true" nullable="false" />
 			</column>
 			<column name="PARTY_TYPE_ID" type="int">
-				<constraints nullable="false" foreignKeyName="fk_party_type" references="PARTY_TYPE(PARTY_TYPE_ID)"/>
+				<constraints nullable="false" foreignKeyName="fk_party_type"
+					references="PARTY_TYPE(PARTY_TYPE_ID)" />
 			</column>
 			<column name="CREATED_BY" type="varchar(50)">
 				<constraints nullable="false" />
