@@ -33,6 +33,15 @@ public class PartyType extends Auditable<String> implements Serializable {
     @Column(name = "name", nullable = false, unique = true)
     private String name;
 
+    public PartyType(Long partyTypeId) {
+        super();
+        this.partyTypeId = partyTypeId;
+    }
+
+    public PartyType() {
+        super();
+    }
+
     public Long getPartyTypeId() {
         return partyTypeId;
     }

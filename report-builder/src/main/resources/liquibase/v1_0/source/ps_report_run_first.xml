@@ -1,0 +1,104 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+  <changeSet id="create_psr_datasource" author="pmurugan">
+    <createTable tableName="PSR_DATASOURCE">
+      <column name="DATASOURCE_Id" type="int" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="NAME" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="CONNECTION_TYPE" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="CONNECTION_URL" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="CREATED_BY" type="varchar(50)">
+        <constraints nullable="true" />
+      </column>
+      <column name="CREATED_DATE" type="datetime">
+        <constraints nullable="false" />
+      </column>
+      <column name="UPDATED_BY" type="varchar(50)">
+        <constraints nullable="true" />
+      </column>
+      <column name="UPDATED_DATE" type="datetime">
+        <constraints nullable="true" />
+      </column>
+      <column name="STATUS" type="varchar(2)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet id="create_psr_resources" author="pmurugan">
+    <createTable tableName="PSR_RESOURCE">
+      <column name="RESOURCE_Id" type="int" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="DATASOURCE_Id" type="int">
+        <constraints nullable="false" foreignKeyName="fk_datasource"
+          references="PSR_DATASOURCE(DATASOURCE_Id)" />
+      </column>
+      <column name="SOURCE_VIEW" type="varchar(100)">
+        <constraints nullable="false" />
+      </column>
+      <column name="DISPLAY_NAME" type="varchar(100)">
+        <constraints nullable="false" />
+      </column>
+      <column name="CREATED_BY" type="varchar(50)">
+        <constraints nullable="true" />
+      </column>
+      <column name="CREATED_DATE" type="datetime">
+        <constraints nullable="false" />
+      </column>
+      <column name="UPDATED_BY" type="varchar(50)">
+        <constraints nullable="true" />
+      </column>
+      <column name="UPDATED_DATE" type="datetime">
+        <constraints nullable="true" />
+      </column>
+      <column name="STATUS" type="varchar(2)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+  <changeSet id="create_psr_definition" author="pmurugan">
+    <createTable tableName="PSR_DEFINITION">
+      <column name="DEFINITION_Id" type="int" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="RESOURCE_Id" type="int">
+        <constraints nullable="false" foreignKeyName="fk_resource"
+          references="PSR_RESOURCE(RESOURCE_Id)" />
+      </column>
+      <column name="NAME" type="varchar(50)">
+        <constraints nullable="false" />
+      </column>
+      <column name="DESCRIPTION" type="varchar(250)">
+        <constraints nullable="true" />
+      </column>
+      <column name="IS_INTERNAL" type="tinyint(1)">
+        <constraints nullable="false" />
+      </column>
+      <column name="CREATED_BY" type="varchar(50)">
+        <constraints nullable="true" />
+      </column>
+      <column name="CREATED_DATE" type="datetime">
+        <constraints nullable="false" />
+      </column>
+      <column name="UPDATED_BY" type="varchar(50)">
+        <constraints nullable="true" />
+      </column>
+      <column name="UPDATED_DATE" type="datetime">
+        <constraints nullable="true" />
+      </column>
+      <column name="STATUS" type="varchar(2)">
+        <constraints nullable="false" />
+      </column>
+    </createTable>
+  </changeSet>
+</databaseChangeLog>

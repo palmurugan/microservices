@@ -34,27 +34,36 @@ public class Party extends Auditable<String> implements Serializable {
     private Long partyId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "party_type_id")
+    @JoinColumn(name = "party_type_id")
     private PartyType partyType;
 
-	public Long getPartyId() {
-		return partyId;
-	}
+    public Party() {
+        super();
+    }
 
-	public void setPartyId(Long partyId) {
-		this.partyId = partyId;
-	}
+    public Party(PartyType partyType) {
+        super();
+        this.partyType = partyType;
+    }
 
-	public PartyType getPartyType() {
-		return partyType;
-	}
+    public Long getPartyId() {
+        return partyId;
+    }
 
-	public void setPartyType(PartyType partyType) {
-		this.partyType = partyType;
-	}
+    public void setPartyId(Long partyId) {
+        this.partyId = partyId;
+    }
 
-	@Override
-	public String toString() {
-		return "Party [partyId=" + partyId + ", partyType=" + partyType + "]";
-	}
+    public PartyType getPartyType() {
+        return partyType;
+    }
+
+    public void setPartyType(PartyType partyType) {
+        this.partyType = partyType;
+    }
+
+    @Override
+    public String toString() {
+        return "Party [partyId=" + partyId + ", partyType=" + partyType + "]";
+    }
 }

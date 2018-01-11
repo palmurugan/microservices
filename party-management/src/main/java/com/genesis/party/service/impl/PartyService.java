@@ -37,13 +37,13 @@ public class PartyService implements IPartyService {
     }
 
     @Override
-    public Party saveOrUpdate(Party entity) {
-        if (Objects.isNull(entity.getPartyType())) {
+    public Party saveOrUpdate(Party party) {
+        if (Objects.isNull(party.getPartyType())) {
             throw new PartyManagementException("Please Provide Party Type");
         }
-        PartyType partyType = partyTypeService.getPartyType(entity.getPartyType().getPartyTypeId());
-        entity.setPartyType(partyType);
-        return partyRepository.save(entity);
+        PartyType partyType = partyTypeService.getPartyType(party.getPartyType().getPartyTypeId());
+        party.setPartyType(partyType);
+        return partyRepository.save(party);
     }
 
     @Override
