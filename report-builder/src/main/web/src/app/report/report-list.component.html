@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-md-6">
+        <h5 class="title-header">Reports</h5>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right right-icon">
+            <a [routerLink]="['/create']">
+                <mat-icon matTooltip="Create">add</mat-icon>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="report-container mat-elevation-z8">
+    <div class="report-header">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+
+
+            <mat-table [dataSource]="dataSource" matSort>
+
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+                    <mat-cell *matCellDef="let definitions"> {{definitions.definitionId}} </mat-cell>
+                </ng-container>
+
+                <!-- Progress Column -->
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let definitions"> {{definitions.name}} </mat-cell>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="description">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+                    <mat-cell *matCellDef="let definitions"> {{definitions.description}} </mat-cell>
+                </ng-container>
+
+                <!-- Color Column -->
+                <ng-container matColumnDef="internal">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Internal </mat-header-cell>
+                    <mat-cell *matCellDef="let definitions"> {{definitions.internal}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="status">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Status </mat-header-cell>
+                    <mat-cell *matCellDef="let definitions"> {{definitions.status}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Action </mat-header-cell>
+                    <mat-cell *matCellDef="let definitions">
+                        <a [routerLink]="['/create']">
+                            <mat-icon matTooltip="Execute">play_arrow</mat-icon>
+                        </a>
+                        <a [routerLink]="['/update']">
+                            <mat-icon matTooltip="Edit">mode_edit</mat-icon>
+                        </a>
+                        <a [routerLink]="['/delete']">
+                            <mat-icon matTooltip="Delete">delete</mat-icon>
+                        </a>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let definitions; columns: displayedColumns;">
+                </mat-row>
+            </mat-table>
+
+            <mat-paginator [length]="length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              (page)="pageEvent = onPaginateChange($event)">
+          </mat-paginator>
+        </div>
+    </div>
+</div>

@@ -44,9 +44,9 @@ public class ResourceREST {
 		return new ResponseEntity<>(resourceService.getAll(pageable), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{definitionId}", method = RequestMethod.GET)
-	public ResponseEntity<Resource> getResource(@PathVariable Long id) {
-		return new ResponseEntity<>(resourceService.get(id), HttpStatus.OK);
+    @RequestMapping(value = "/{resourceId}", method = RequestMethod.GET)
+    public ResponseEntity<Resource> getResource(@PathVariable Long resourceId) {
+        return new ResponseEntity<>(resourceService.get(resourceId), HttpStatus.OK);
 	}
 
 	@RequestMapping(method = RequestMethod.GET, params = "status")
@@ -54,7 +54,7 @@ public class ResourceREST {
 		return new ResponseEntity<>(resourceService.findByStatus(status), HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/{definitionId}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/{resourceId}", method = RequestMethod.PUT)
 	public ResponseEntity<Resource> updateResource(@RequestBody Resource resource, @PathVariable Long resourceId) {
 		resource.setResourceId(resourceId);
 		return new ResponseEntity<>(resourceService.saveOrUpdate(resource), HttpStatus.OK);

@@ -1,0 +1,76 @@
+{
+    "content": [
+        {
+            "createdBy": "Admin",
+            "createdDate": 1515599740000,
+            "updatedBy": "Admin",
+            "updatedDate": null,
+            "status": "A",
+            "definitionId": 1,
+            "resource": {
+                "createdBy": "Admin",
+                "createdDate": 1513783508000,
+                "updatedBy": null,
+                "updatedDate": null,
+                "status": "A",
+                "resourceId": 1,
+                "datasource": {
+                    "createdBy": "Admin",
+                    "createdDate": 1513783508000,
+                    "updatedBy": null,
+                    "updatedDate": null,
+                    "status": "A",
+                    "dataSourceId": 1,
+                    "name": "Test Connection",
+                    "connectionType": "MySQL",
+                    "connectionURL": "TestURL"
+                },
+                "sourceView": "Test",
+                "displayName": "Test View"
+            },
+            "name": "Pal",
+            "description": "Test Description",
+            "internal": true
+        },
+        {
+            "createdBy": "Admin",
+            "createdDate": 1515599740000,
+            "updatedBy": "Admin",
+            "updatedDate": null,
+            "status": "A",
+            "definitionId": 1,
+            "resource": {
+                "createdBy": "Admin",
+                "createdDate": 1513783508000,
+                "updatedBy": null,
+                "updatedDate": null,
+                "status": "A",
+                "resourceId": 1,
+                "datasource": {
+                    "createdBy": "Admin",
+                    "createdDate": 1513783508000,
+                    "updatedBy": null,
+                    "updatedDate": null,
+                    "status": "A",
+                    "dataSourceId": 1,
+                    "name": "Test Connection",
+                    "connectionType": "MySQL",
+                    "connectionURL": "TestURL"
+                },
+                "sourceView": "Test",
+                "displayName": "Test View"
+            },
+            "name": "Pal",
+            "description": "Test Description",
+            "internal": true
+        }
+    ],
+    "last": true,
+    "totalPages": 1,
+    "totalElements": 1,
+    "size": 20,
+    "number": 0,
+    "first": true,
+    "sort": null,
+    "numberOfElements": 1
+}

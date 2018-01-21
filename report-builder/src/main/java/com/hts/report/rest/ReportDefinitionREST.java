@@ -50,8 +50,8 @@ public class ReportDefinitionREST {
 
 	@RequestMapping(value = "/{definitionId}", method = RequestMethod.GET)
 	@ApiOperation(value = "Get Report Definition", response = ReportDefinition.class)
-	public ResponseEntity<ReportDefinition> getReportDefinition(@PathVariable Long id) {
-		return new ResponseEntity<>(reportDefinitionService.get(id), HttpStatus.OK);
+    public ResponseEntity<ReportDefinition> getReportDefinition(@PathVariable Long definitionId) {
+        return new ResponseEntity<>(reportDefinitionService.get(definitionId), HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "/{definitionId}", method = RequestMethod.PUT)

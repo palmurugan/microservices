@@ -1,6 +1,9 @@
 package com.hts.report.service.impl;
 
+import java.util.Objects;
+
 import javax.inject.Inject;
+import javax.transaction.Transactional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +15,7 @@ import com.hts.report.service.IReportDefinitionService;
 import com.hts.report.service.IResourceService;
 
 @Service
+@Transactional
 public class ReportDefinitionService implements IReportDefinitionService {
 
 	private ReportDefinitionRepository reportDefinitionRepository;
@@ -27,6 +31,12 @@ public class ReportDefinitionService implements IReportDefinitionService {
     @Override
     public ReportDefinition saveOrUpdate(ReportDefinition reportDefinition) {
         reportDefinition.setResource(resourceService.get(reportDefinition.getResource().getResourceId()));
+		if (Objects.nonNull(reportDefinition.getReportColumns())) {
+        	reportDefinition.addReportColumns(reportDefinition.getReportColumns());
+        }
+		if (Objects.nonNull(reportDefinition.getReportFilter())) {
+			reportDefinition.addReportFilter(reportDefinition.getReportFilter());
+		}
         return reportDefinitionRepository.save(reportDefinition);
     }
 

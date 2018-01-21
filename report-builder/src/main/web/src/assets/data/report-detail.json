@@ -1,0 +1,53 @@
+{
+    "createdBy": "Admin",
+    "createdDate": 1516188117000,
+    "updatedBy": "Admin",
+    "updatedDate": 1516188425000,
+    "status": "A",
+    "definitionId": 1,
+    "resource": {
+        "createdBy": "Admin",
+        "createdDate": 1513783508000,
+        "updatedBy": null,
+        "updatedDate": null,
+        "status": "A",
+        "resourceId": 1,
+        "datasource": {
+            "createdBy": "Admin",
+            "createdDate": 1513783508000,
+            "updatedBy": null,
+            "updatedDate": null,
+            "status": "A",
+            "dataSourceId": 1,
+            "name": "Test Connection",
+            "connectionType": "MySQL",
+            "connectionURL": "jdbc:mysql://localhost:3306/psreport"
+        },
+        "sourceView": "psr_column",
+        "displayName": "Test View"
+    },
+    "name": "PalTest",
+    "description": "Test Description",
+    "public": true,
+    "reportColumns": [
+        {
+            "createdBy": "Admin",
+            "createdDate": 1516188424000,
+            "updatedBy": "Admin",
+            "updatedDate": null,
+            "status": "A",
+            "id": 7,
+            "name": "firstName",
+            "sequence": 1
+        }
+    ],
+    "reportFilter": {
+        "createdBy": "Admin",
+        "createdDate": 1516188424000,
+        "updatedBy": "Admin",
+        "updatedDate": null,
+        "status": "A",
+        "id": 3,
+        "filterQuery": "{\"condition\":\"and\",\"rules\":[{ \"field\": \"age\", \"operator\": \">=\" }]}"
+    }
+}

@@ -1,0 +1,160 @@
+<p-growl [(value)]="msgs"></p-growl>
+
+<div class="row">
+    <div class="col-md-6">
+        <h5 class="title-header">Create Report</h5>
+    </div>
+    <div class="col-md-6">
+        <div class="pull-right right-icon">
+            <a [routerLink]="['/report']">
+                <mat-icon matTooltip="Back">reply</mat-icon>
+            </a>
+        </div>
+    </div>
+</div>
+
+<mat-horizontal-stepper [linear]="isLinear">
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Report Definition</ng-template>
+            <mat-form-field class="report-full-width">
+                <input matInput placeholder="Name" formControlName="name" required minlength="4">
+            </mat-form-field>
+            <mat-form-field class="report-full-width">
+                <textarea matInput placeholder="Description" formControlName="description" name="description"></textarea>
+            </mat-form-field>
+            <mat-form-field class="report-full-width">
+                <mat-select placeholder="Resource" name="resource" formControlName="resourceView" (change)="loadColumnFilter($event)" required>
+                    <mat-option *ngFor=" let resource of resources " [value]="resource.resourceId ">
+                        {{ resource.displayName }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-checkbox name="public" formControlName="public">
+                Public
+            </mat-checkbox>
+            <div class="row ">
+                <div class="col-md-12 ">
+                    <div class="button-row pull-right mt-5 ">
+                        <button mat-raised-button color="primary" matStepperNext (click)="saveDefinition()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+        <ng-template matStepLabel>Columns</ng-template>
+        <div class="content-section implementation ">
+            <p-pickList [source]="available " [target]="selected " sourceHeader="Available " targetHeader="Selected
+                        " [responsive]="true " filterBy="name " dragdrop="true " dragdropScope="cars " sourceFilterPlaceholder="Search by name
+                        " targetFilterPlaceholder="Search by name " [sourceStyle]="{ 'height': '300px'} " [targetStyle]="{ 'height': '300px'} ">
+                <ng-template let-column pTemplate="item ">
+                    <div class="ui-helper-clearfix ">
+                        <div style="font-size:14px;float:right;margin:15px 5px 0 0 ">{{column.name}}</div>
+                    </div>
+                </ng-template>
+                </p-pickList>
+        </div>
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="button-row pull-left mt-5 ">
+                    <button mat-raised-button matStepperPrevious>Back</button>
+                </div>
+                <div class="button-row pull-right mt-5 ">
+                    <button mat-raised-button matStepperNext>Next</button>
+                </div>
+            </div>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Filter</ng-template>
+        <query-builder class='margin30' [data]='query' [config]='config'></query-builder>
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="button-row pull-left mt-5 ">
+                    <button mat-raised-button matStepperPrevious>Back</button>
+                </div>
+                <div class="button-row pull-right mt-5 ">
+                    <button mat-raised-button (click)="saveReport() ">Save</button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
+
+<!--<mat-horizontal-stepper [linear]="isLinear">
+    <mat-step label="Definition">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="report-form">
+                    <mat-form-field class="report-full-width">
+                        <input matInput placeholder="Name" [(ngModel)]="name" name="name" required minlength="4">
+                    </mat-form-field>
+
+                    <mat-form-field class="report-full-width">
+                        <textarea matInput placeholder="Description" [(ngModel)]="description" name="description"></textarea>
+                    </mat-form-field>
+                    <mat-form-field class="report-full-width">
+                        <mat-select placeholder="Resource" name="resource" [(ngModel)]="resource" required>
+                            <mat-option *ngFor=" let resource of resources " [value]="resource.resourceId ">
+                                {{ resource.resourceName }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-checkbox [(ngModel)]="isChecked " name="isChecked " value="public ">
+                        Public
+                    </mat-checkbox>
+                </form>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-12 ">
+                <div class="button-row pull-right mt-5 ">
+                    
+<button mat-raised-button color="primary" (click)="saveBasic(stepper)">Save</button>
+</div>
+</div>
+</div>
+</mat-step>
+<mat-step label=" Columns ">
+
+    <div class="content-section implementation ">
+        <p-pickList [source]="available " [target]="selected " sourceHeader="Available " targetHeader="Selected
+                        " [responsive]="true " filterBy="name " dragdrop="true " dragdropScope="cars " sourceFilterPlaceholder="Search by name
+                        " targetFilterPlaceholder="Search by name " [sourceStyle]="{ 'height': '300px'} " [targetStyle]="{ 'height': '300px'} ">
+            <ng-template let-column pTemplate="item ">
+                <div class="ui-helper-clearfix ">
+                    <div style="font-size:14px;float:right;margin:15px 5px 0 0 ">{{column.name}}</div>
+                </div>
+            </ng-template>
+            </p-pickList>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-12 ">
+            <div class="button-row pull-left mt-5 ">
+                <button mat-raised-button matStepperPrevious>Back</button>
+            </div>
+            <div class="button-row pull-right mt-5 ">
+                <button mat-raised-button matStepperNext>Next</button>
+            </div>
+        </div>
+    </div>
+</mat-step>
+<mat-step label="Filter ">
+    <query-builder class='margin30' [data]='query' [config]='config'></query-builder>
+    <div class="row ">
+        <div class="col-md-12 ">
+            <div class="button-row pull-left mt-5 ">
+                <button mat-raised-button matStepperPrevious>Back</button>
+            </div>
+            <div class="button-row pull-right mt-5 ">
+                <button mat-raised-button (click)="saveReport() ">Save</button>
+            </div>
+        </div>
+    </div>
+</mat-step>
+</mat-horizontal-stepper>-->
