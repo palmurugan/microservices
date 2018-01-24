@@ -31,7 +31,7 @@ export class ReportUpdateComponent implements OnInit {
     ngOnInit() {
         this.paramSub = this.route.params.subscribe(params => {
             this.reportId = params['reportId'];
-        })
+        });
         this.selected = [];
         this.reportService.getAvailableColumn(1).then(availableColumn => this.available = availableColumn);
         this.reportService.getViewList().then(resources => this.resources = resources);

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Message } from 'primeng/components/common/api';
 
 import { QueryBuilderConfig } from '../../../lib/components/query-builder';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 import { ReportService } from './report.service';
 import { Resource } from '../domain/Resource';
 @Component({
@@ -11,7 +11,7 @@ import { Resource } from '../domain/Resource';
 })
 export class ReportCreateComponent implements OnInit {
 
-	definitionId: number;
+    definitionId: number;
     msgs: Message[] = [];
     isLinear = true;
     public: boolean = true;
@@ -55,50 +55,84 @@ export class ReportCreateComponent implements OnInit {
     }
 
     loadColumnFilter(event) {
-        console.log("event", event);
-        this.reportService.getAvailableColumn(event.value).then(availableColumn => this.available = availableColumn);        
+        this.reportService.getAvailableColumn(event.value).then(availableColumn => this.available = availableColumn);
         this.config = this.reportService.getFilterConfiguration(event.value);
         this.config.subscribe(data => {
-            this.config = data;            
+            this.config = data;
         });
     }
-    
+
     saveDefinition() {
-        var data = {
+        const definition = {
             'resource': {
-                "resourceId": this.firstFormGroup.get('resourceView').value
+                'resourceId': this.firstFormGroup.get('resourceView').value
             },
             'name': this.firstFormGroup.get('name').value,
             'description': this.firstFormGroup.get('description').value,
             'internal': this.firstFormGroup.get('public').value,
             'status': 'A'
-        }
-        this.reportService.saveReportDefinition(data).subscribe(data => {
-            this.definitionId = data.definitionId;
+        };
+        this.reportService.saveReportDefinition(definition).subscribe(result => {
+            this.definitionId = result.definitionId;
         });
         this.msgs.push({ severity: 'success', summary: 'Success Message', detail: 'Report Created' });
     }
     saveColumns() {
+        let i = 1;
+        const selectedColumns = [];
+        this.selected.forEach(column => {
+            selectedColumns.push({
+                'name': column.name,
+                'sequence': i,
+                'status': 'A'
+            });
+            i++;
+        });
+        const columnData = {
+            'resource': {
+                'resourceId': this.firstFormGroup.get('resourceView').value
+            },
+            'reportColumns': selectedColumns,
+            'reportFilter': {
+                'filterQuery': JSON.stringify(this.query)
+            },
+            'name': this.firstFormGroup.get('name').value,
+            'description': this.firstFormGroup.get('description').value,
+            'internal': this.firstFormGroup.get('public').value,
+            'status': 'A'
+        };
+        this.reportService.updateReportDefinition(this.definitionId, columnData).subscribe(result => {
+            this.definitionId = result.definitionId;
+        });
+        this.msgs.push({ severity: 'success', summary: 'Success Message', detail: 'Report Created' });
     }
-    saveReport() {
-        var data = {
-            "resource": {
-                "resourceId": this.resource
+    saveReportFilter() {
+        let i = 1;
+        const selectedColumns = [];
+        this.selected.forEach(column => {
+            selectedColumns.push({
+                'name': column.name,
+                'sequence': i,
+                'status': 'A'
+            });
+            i++;
+        });
+        const columnData = {
+            'resource': {
+                'resourceId': this.firstFormGroup.get('resourceView').value
             },
-            "reportColumns": [{
-                "name": "lastname",
-                "sequence": 1,
-                "status": "A"
-            }],
-            "reportFilter": {
-                "filterQuery": JSON.stringify(this.query)
+            'reportColumns': selectedColumns,
+            'reportFilter': {
+                'filterQuery': JSON.stringify(this.query)
             },
-            "name": this.name,
-            "description": this.description,
-            "internal": this.public,
-            "status": "A"
-        }
-        console.log("Result Value :", data);
+            'name': this.firstFormGroup.get('name').value,
+            'description': this.firstFormGroup.get('description').value,
+            'internal': this.firstFormGroup.get('public').value,
+            'status': 'A'
+        };
+        this.reportService.updateReportDefinition(this.definitionId, columnData).subscribe(result => {
+            this.definitionId = result.definitionId;
+        });
         this.msgs.push({ severity: 'success', summary: 'Success Message', detail: 'Report Created' });
     }
 }
