@@ -3,8 +3,8 @@ package com.macts.gateway;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.embedded.undertow.UndertowEmbeddedServletContainerFactory;
-import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.web.embedded.undertow.UndertowServletWebServerFactory;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,9 +25,8 @@ public class GatewayApplication extends SpringBootServletInitializer {
 	}
 
 	@Bean
-	public UndertowEmbeddedServletContainerFactory embeddedServletContainerFactory() {
-		UndertowEmbeddedServletContainerFactory factory = new UndertowEmbeddedServletContainerFactory();
-		return factory;
+	public UndertowServletWebServerFactory embeddedServletContainerFactory() {
+		return new UndertowServletWebServerFactory();
 	}
 
 	@Override
