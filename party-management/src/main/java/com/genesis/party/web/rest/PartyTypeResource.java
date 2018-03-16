@@ -48,7 +48,7 @@ public class PartyTypeResource {
 
     @RequestMapping(value = "/{partyTypeId}", method = GET)
     public ResponseEntity<PartyType> getPartyType(@PathVariable Long partyTypeId) {
-        return new ResponseEntity<PartyType>(partyTypeService.getPartyType(partyTypeId), HttpStatus.OK);
+        return new ResponseEntity<PartyType>(partyTypeService.getPartyType(partyTypeId).get(), HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{partyTypeId}", method = PUT)

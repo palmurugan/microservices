@@ -1,5 +1,7 @@
 package com.genesis.party.service.impl;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 
 import org.springframework.data.domain.Page;
@@ -36,12 +38,12 @@ public class PartyRelationshipTypeService implements IPartyRelationshipTypeServi
     }
 
     @Override
-    public PartyRelationshipType get(Long id) {
-        return partyRelationshipTypeRepository.findOne(id);
+    public Optional<PartyRelationshipType> get(Long id) {
+        return partyRelationshipTypeRepository.findById(id);
     }
 
     @Override
     public void remove(Long id) {
-        partyRelationshipTypeRepository.delete(id);
+        partyRelationshipTypeRepository.deleteById(id);
     }
 }

@@ -1,5 +1,7 @@
 package com.genesis.party.service.impl;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 
 import org.springframework.data.domain.Page;
@@ -38,13 +40,13 @@ public class PartyRelationshipService implements IPartyRelationshipService {
 
     @Override
     public PartyRelationship saveOrUpdate(PartyRelationship partyRelationship) {
-        Party party1 = partyService.get(partyRelationship.getParty1().getPartyId());
-        Party party2 = partyService.get(partyRelationship.getParty2().getPartyId());
-        PartyRelationshipType partyRelationshipType =
-                partyRelationshipTypeService.get(partyRelationship.getPartyRelationshipType().getPartyRelationshipTypeId());
-        partyRelationship.setParty1(party1);
-        partyRelationship.setParty2(party2);
-        partyRelationship.setPartyRelationshipType(partyRelationshipType);
+        Optional<Party> party1 = partyService.get(partyRelationship.getParty1().getPartyId());
+        Optional<Party> party2 = partyService.get(partyRelationship.getParty2().getPartyId());
+        Optional<PartyRelationshipType> partyRelationshipType = partyRelationshipTypeService
+                .get(partyRelationship.getPartyRelationshipType().getPartyRelationshipTypeId());
+        partyRelationship.setParty1(party1.get());
+        partyRelationship.setParty2(party2.get());
+        partyRelationship.setPartyRelationshipType(partyRelationshipType.get());
         return partyRelationshipRepository.save(partyRelationship);
     }
 
@@ -54,12 +56,12 @@ public class PartyRelationshipService implements IPartyRelationshipService {
     }
 
     @Override
-    public PartyRelationship get(Long id) {
-        return partyRelationshipRepository.findOne(id);
+    public Optional<PartyRelationship> get(Long id) {
+        return partyRelationshipRepository.findById(id);
     }
 
     @Override
     public void remove(Long id) {
-        partyRelationshipRepository.delete(id);
+        partyRelationshipRepository.deleteById(id);
     }
 }

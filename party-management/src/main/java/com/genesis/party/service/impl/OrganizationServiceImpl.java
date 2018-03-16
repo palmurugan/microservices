@@ -1,5 +1,7 @@
 package com.genesis.party.service.impl;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 
 import org.springframework.data.domain.Page;
@@ -33,8 +35,8 @@ public class OrganizationServiceImpl implements IOrganizationService {
 
     @Override
     public Organization saveOrUpdate(Organization organization) {
-        PartyType partyType = partyTypeService.getPartyType(1L);
-        Party party = new Party(partyType);
+        Optional<PartyType> partyType = partyTypeService.getPartyType(1L);
+        Party party = new Party(partyType.get());
         organization.setParty(party);
         return organizationRepository.save(organization);
     }
@@ -45,12 +47,12 @@ public class OrganizationServiceImpl implements IOrganizationService {
     }
 
     @Override
-    public Organization get(Long id) {
-        return organizationRepository.findOne(id);
+    public Optional<Organization> get(Long id) {
+        return organizationRepository.findById(id);
     }
 
     @Override
     public void remove(Long id) {
-        organizationRepository.delete(id);
+        organizationRepository.deleteById(id);
     }
 }

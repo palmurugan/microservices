@@ -3,6 +3,8 @@ package com.genesis.party.service.impl;
 
 import static com.genesis.party.util.ApplicationConstants.ACTIVE;
 
+import java.util.Optional;
+
 import javax.inject.Inject;
 
 import org.springframework.data.domain.Page;
@@ -40,12 +42,12 @@ public class PartyTypeService implements IPartyTypeService {
     }
 
     @Override
-    public PartyType getPartyType(Long partyTypeId) {
-        return partyTypeRepository.findOne(partyTypeId);
+    public Optional<PartyType> getPartyType(Long partyTypeId) {
+        return partyTypeRepository.findById(partyTypeId);
     }
 
     @Override
     public void deletePartyType(Long partyTypeId) {
-        partyTypeRepository.delete(partyTypeId);
+        partyTypeRepository.deleteById(partyTypeId);
     }
 }

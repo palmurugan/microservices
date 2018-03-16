@@ -1,5 +1,7 @@
 package com.genesis.common.configuration;
 
+import java.util.Optional;
+
 import org.springframework.data.domain.AuditorAware;
 
 /**
@@ -10,9 +12,9 @@ import org.springframework.data.domain.AuditorAware;
 
 public class AuditorAwareImpl implements AuditorAware<String> {
 
-	@Override
-	public String getCurrentAuditor() {
-		// TODO make this name dynamic from security context
-		return "Admin";
-	}
+    @Override
+    public Optional<String> getCurrentAuditor() {
+        // TODO make this name dynamic from security context
+        return Optional.of("Admin");
+    }
 }

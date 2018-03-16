@@ -1,6 +1,7 @@
 package com.genesis.party.service.impl;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import javax.inject.Inject;
 import javax.transaction.Transactional;
@@ -28,7 +29,7 @@ public class PartyService implements IPartyService {
 
     private PartyRepository partyRepository;
 
-	private IPartyTypeService partyTypeService;
+    private IPartyTypeService partyTypeService;
 
     @Inject
     public PartyService(PartyRepository partyRepository, IPartyTypeService partyTypeService) {
@@ -41,8 +42,8 @@ public class PartyService implements IPartyService {
         if (Objects.isNull(party.getPartyType())) {
             throw new PartyManagementException("Please Provide Party Type");
         }
-        PartyType partyType = partyTypeService.getPartyType(party.getPartyType().getPartyTypeId());
-        party.setPartyType(partyType);
+        Optional<PartyType> partyType = partyTypeService.getPartyType(party.getPartyType().getPartyTypeId());
+        party.setPartyType(partyType.get());
         return partyRepository.save(party);
     }
 
@@ -52,13 +53,13 @@ public class PartyService implements IPartyService {
     }
 
     @Override
-    public Party get(Long id) {
-        return partyRepository.findOne(id);
+    public Optional<Party> get(Long id) {
+        return partyRepository.findById(id);
     }
 
     @Override
     public void remove(Long id) {
-        partyRepository.delete(id);
+        partyRepository.deleteById(id);
     }
 
 }
