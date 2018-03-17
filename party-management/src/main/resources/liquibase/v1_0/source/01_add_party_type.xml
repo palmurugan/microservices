@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-	<changeSet id="create_party_type" author="pmurugan">
+	<changeSet id="01_create_party_type" author="pmurugan">
 		<createTable tableName="PARTY_TYPE">
 			<column name="PARTY_TYPE_ID" type="int">
 				<constraints primaryKey="true" nullable="false" />
