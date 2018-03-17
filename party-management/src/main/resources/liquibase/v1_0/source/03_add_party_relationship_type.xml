@@ -3,22 +3,14 @@
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-	<changeSet id="create_party-relationship-27-12-2017" author="pmurugan">
-		<createTable tableName="PARTY_RELATIONSHIP">
-			<column name="PARTY_RELATIONSHIP_ID" type="int" autoIncrement="true">
+	<changeSet id="03_create_party_relationship_type" author="pmurugan">
+		<createTable tableName="PARTY_RELATIONSHIP_TYPE">
+			<column name="PARTY_RELATIONSHIP_TYPE_ID" type="int"
+				autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
-			<column name="PARTY_ID1" type="int">
-				<constraints nullable="false" foreignKeyName="fk_party1"
-					references="PARTY(PARTY_ID)" />
-			</column>
-			<column name="PARTY_ID2" type="int">
-				<constraints nullable="false" foreignKeyName="fk_party2"
-					references="PARTY(PARTY_ID)" />
-			</column>
-			<column name="PARTY_RELATIONSHIP_TYPE_ID" type="int">
-				<constraints nullable="false" foreignKeyName="fk_party_relationshipt_type"
-					references="PARTY_RELATIONSHIP_TYPE(PARTY_RELATIONSHIP_TYPE_ID)" />
+			<column name="NAME" type="varchar(50)">
+				<constraints nullable="false" />
 			</column>
 			<column name="CREATED_BY" type="varchar(50)">
 				<constraints nullable="false" />
