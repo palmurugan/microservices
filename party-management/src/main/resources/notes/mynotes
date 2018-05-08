@@ -1,1 +1,3 @@
 mvn liquibase:update
+
+http://www.baeldung.com/global-error-handler-in-a-spring-rest-api - field error handling

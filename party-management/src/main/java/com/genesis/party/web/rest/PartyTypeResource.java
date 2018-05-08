@@ -6,6 +6,7 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 import static org.springframework.web.bind.annotation.RequestMethod.PUT;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -37,7 +38,7 @@ public class PartyTypeResource {
     }
 
     @RequestMapping(method = POST)
-    public ResponseEntity<PartyType> createPartyType(@RequestBody PartyType partyType) {
+	public ResponseEntity<PartyType> createPartyType(@Valid @RequestBody PartyType partyType) {
         return new ResponseEntity<>(partyTypeService.saveOrUpdatePartyType(partyType), HttpStatus.CREATED);
     }
 
@@ -52,7 +53,8 @@ public class PartyTypeResource {
     }
 
     @RequestMapping(value = "/{partyTypeId}", method = PUT)
-    public ResponseEntity<PartyType> updatePartyType(@PathVariable Long partyTypeId, @RequestBody PartyType partyType) {
+	public ResponseEntity<PartyType> updatePartyType(@PathVariable Long partyTypeId,
+			@Valid @RequestBody PartyType partyType) {
         partyType.setPartyTypeId(partyTypeId);
         return new ResponseEntity<PartyType>(partyTypeService.saveOrUpdatePartyType(partyType), HttpStatus.OK);
     }

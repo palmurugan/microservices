@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.genesis.common.domain.Auditable;
 
@@ -32,6 +34,8 @@ public class PartyRelationshipType extends Auditable<String> implements Serializ
     private Long partyRelationshipTypeId;
 
     @Column(name = "name", unique = true, nullable = false)
+	@NotNull(message = "relationship type should not be null")
+	@NotBlank(message = "relationship type should not be empty")
     private String name;
 
     public Long getPartyRelationshipTypeId() {
