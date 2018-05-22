@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.genesis.common.domain.Auditable;
 
@@ -32,6 +34,8 @@ public class Organization extends Auditable<String> implements Serializable {
     private Party party;
 
     @Column(name = "name")
+	@NotNull(message = "Organization name is mandatory")
+	@NotBlank(message = "Organization name is mandatory")
     private String name;
 
     public Long getOrganizationId() {

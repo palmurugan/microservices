@@ -1,6 +1,7 @@
 package com.genesis.party.web.rest;
 
 import javax.inject.Inject;
+import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class OrganizationResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Organization> createOrganization(@RequestBody Organization organization) {
+	public ResponseEntity<Organization> createOrganization(@Valid @RequestBody Organization organization) {
         return new ResponseEntity<Organization>(organizationService.saveOrUpdate(organization), HttpStatus.CREATED);
     }
 }
