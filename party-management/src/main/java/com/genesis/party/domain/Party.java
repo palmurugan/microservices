@@ -33,7 +33,7 @@ public class Party extends Auditable<String> implements Serializable {
     @Column(name = "party_id", unique = true, nullable = false)
     private Long partyId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "party_type_id")
     private PartyType partyType;
 

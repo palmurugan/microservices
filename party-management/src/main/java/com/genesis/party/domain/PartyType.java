@@ -24,44 +24,57 @@ import com.genesis.party.service.impl.PartyTypeService;
 @Table(name = "party_type")
 public class PartyType extends Auditable<String> implements Serializable {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = -2627086124301570090L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2627086124301570090L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "party_type_id", unique = true, nullable = false)
-    private Long partyTypeId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "party_type_id", unique = true, nullable = false)
+	private Long partyTypeId;
 
-    @Column(name = "name", nullable = false, unique = true)
+	@Column(name = "name", nullable = false, unique = true)
 	@NotNull(message = "party type name should not be null")
 	@NotBlank(message = "party type name should not be empty")
 	@Unique(service = PartyTypeService.class, fieldName = "name", message = "Party type name should not be duplicate")
-    private String name;
+	private String name;
 
-    public PartyType(Long partyTypeId) {
-        super();
-        this.partyTypeId = partyTypeId;
-    }
+	public PartyType(Long partyTypeId) {
+		super();
+		this.partyTypeId = partyTypeId;
+	}
 
-    public PartyType() {
-        super();
-    }
+	public PartyType(Long partyTypeId,
+			@NotNull(message = "party type name should not be null") @NotBlank(message = "party type name should not be empty") String name) {
+		super();
+		this.partyTypeId = partyTypeId;
+		this.name = name;
+	}
 
-    public Long getPartyTypeId() {
-        return partyTypeId;
-    }
+	public PartyType(
+			@NotNull(message = "party type name should not be null") @NotBlank(message = "party type name should not be empty") String name) {
+		super();
+		this.name = name;
+	}
 
-    public void setPartyTypeId(Long partyTypeId) {
-        this.partyTypeId = partyTypeId;
-    }
+	public PartyType() {
+		super();
+	}
 
-    public String getName() {
-        return name;
-    }
+	public Long getPartyTypeId() {
+		return partyTypeId;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setPartyTypeId(Long partyTypeId) {
+		this.partyTypeId = partyTypeId;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }
