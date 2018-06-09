@@ -1,5 +1,6 @@
 package com.genesis.party.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.inject.Inject;
@@ -35,7 +36,7 @@ public class OrganizationServiceImpl implements IOrganizationService {
 
     @Override
     public Organization saveOrUpdate(Organization organization) {
-        Optional<PartyType> partyType = partyTypeService.getPartyType(1L);
+		Optional<PartyType> partyType = partyTypeService.get(1L);
         Party party = new Party(partyType.get());
         organization.setParty(party);
         return organizationRepository.save(organization);
@@ -55,4 +56,16 @@ public class OrganizationServiceImpl implements IOrganizationService {
     public void remove(Long id) {
         organizationRepository.deleteById(id);
     }
+
+	@Override
+	public void saveOrUpdateAll(List<Organization> entities) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void removeAll(List<Organization> entities) {
+		// TODO Auto-generated method stub
+
+	}
 }

@@ -11,7 +11,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import com.genesis.common.annotation.Unique;
 import com.genesis.common.domain.Auditable;
+import com.genesis.party.service.impl.PartyRelationshipTypeService;
 
 /**
  * 
@@ -36,6 +38,7 @@ public class PartyRelationshipType extends Auditable<String> implements Serializ
     @Column(name = "name", unique = true, nullable = false)
 	@NotNull(message = "relationship type should not be null")
 	@NotBlank(message = "relationship type should not be empty")
+	@Unique(service = PartyRelationshipTypeService.class, fieldName = "name", message = "Party relationship type already exists")
     private String name;
 
     public Long getPartyRelationshipTypeId() {

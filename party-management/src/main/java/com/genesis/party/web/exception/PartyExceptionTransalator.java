@@ -24,6 +24,8 @@ import com.genesis.common.dto.FieldError;
 @ControllerAdvice
 public class PartyExceptionTransalator {
 
+	private static final String VALIDATION_FAILED = "Validation Failed!";
+
 	@ExceptionHandler(PartyManagementException.class)
 	public final ResponseEntity<ErrorResponse> handlePartyManagementException(
 			PartyManagementException partyManagementException, WebRequest request) {
@@ -57,7 +59,7 @@ public class PartyExceptionTransalator {
 		}
 		fieldError.setErrors(errors);
 		fieldError.setTimestamp(new Date());
-		fieldError.setMessage(excepion.getLocalizedMessage());
+		fieldError.setMessage(VALIDATION_FAILED);
 		return fieldError;
 	}
 
