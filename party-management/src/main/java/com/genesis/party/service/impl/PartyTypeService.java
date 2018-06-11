@@ -1,7 +1,5 @@
 package com.genesis.party.service.impl;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +14,6 @@ import com.genesis.party.service.IPartyTypeService;
  *
  */
 @Service
-@Transactional
 public class PartyTypeService extends GenericServiceImpl<PartyType, Long> implements IPartyTypeService {
 
 	@Autowired

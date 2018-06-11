@@ -4,3 +4,11 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/liquibase/db-changelog-master.xml
+  datasource:
+    url: jdbc:mysql://localhost:3306/ptracker?useSSL=false
+    username: root
+    password: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect

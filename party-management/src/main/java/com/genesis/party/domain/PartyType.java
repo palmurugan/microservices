@@ -45,15 +45,13 @@ public class PartyType extends Auditable<String> implements Serializable {
 		this.partyTypeId = partyTypeId;
 	}
 
-	public PartyType(Long partyTypeId,
-			@NotNull(message = "party type name should not be null") @NotBlank(message = "party type name should not be empty") String name) {
+	public PartyType(Long partyTypeId, String name) {
 		super();
 		this.partyTypeId = partyTypeId;
 		this.name = name;
 	}
 
-	public PartyType(
-			@NotNull(message = "party type name should not be null") @NotBlank(message = "party type name should not be empty") String name) {
+	public PartyType(String name) {
 		super();
 		this.name = name;
 	}
