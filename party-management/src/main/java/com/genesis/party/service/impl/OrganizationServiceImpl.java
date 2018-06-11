@@ -7,7 +7,6 @@ import javax.inject.Inject;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Service;
 
 import com.genesis.party.dao.OrganizationRepository;
 import com.genesis.party.domain.Organization;
@@ -21,7 +20,7 @@ import com.genesis.party.service.IPartyTypeService;
  * @author PalMurugan C
  *
  */
-@Service
+// @Service
 public class OrganizationServiceImpl implements IOrganizationService {
 
     private OrganizationRepository organizationRepository;

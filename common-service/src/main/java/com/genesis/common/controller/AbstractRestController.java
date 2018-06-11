@@ -31,7 +31,7 @@ public abstract class AbstractRestController<E, K> {
 	}
 
 	@RequestMapping(method = POST)
-	public ResponseEntity<E> create(@RequestBody E entity) {
+	public ResponseEntity<E> create(@Valid @RequestBody E entity) {
 		return new ResponseEntity<>(genericService.saveOrUpdate(entity), HttpStatus.CREATED);
 	}
 

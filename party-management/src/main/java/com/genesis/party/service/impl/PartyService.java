@@ -1,7 +1,5 @@
 package com.genesis.party.service.impl;
 
-import javax.transaction.Transactional;
-
 import org.springframework.stereotype.Service;
 
 import com.genesis.common.service.impl.GenericServiceImpl;
@@ -16,7 +14,6 @@ import com.genesis.party.service.IPartyService;
  */
 
 @Service
-@Transactional
 public class PartyService extends GenericServiceImpl<Party, Long> implements IPartyService {
 
 	public PartyService(PartyRepository partyRepository) {

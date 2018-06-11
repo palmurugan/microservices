@@ -2,7 +2,6 @@ package com.genesis.party.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,15 +32,15 @@ public class PartyRelationship extends Auditable<String> implements Serializable
     @Column(name = "party_relationship_id", unique = true, nullable = false)
     private Long partyRelationshipTypeId;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne()
     @JoinColumn(name = "party_id1")
     private Party party1;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne()
     @JoinColumn(name = "party_id2")
     private Party party2;
 
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne()
     @JoinColumn(name = "party_relationship_type_id")
     private PartyRelationshipType partyRelationshipType;
 
