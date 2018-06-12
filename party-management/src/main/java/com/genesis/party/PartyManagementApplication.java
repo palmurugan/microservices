@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import com.genesis.common.configuration.AuditConfiguration;
-import com.genesis.common.configuration.SwaggerConfiguration;
 
 /**
  * 
@@ -22,7 +21,7 @@ import com.genesis.common.configuration.SwaggerConfiguration;
 @EnableJpaAuditing
 @SpringBootApplication
 @ComponentScan({ "com.genesis.common", "com.genesis.party" })
-@Import({ AuditConfiguration.class, SwaggerConfiguration.class })
+@Import({ AuditConfiguration.class })
 public class PartyManagementApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
