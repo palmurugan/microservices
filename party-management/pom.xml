@@ -53,7 +53,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -77,14 +77,14 @@
 			<version>${lombok.version}</version>
 			<type>pom</type>
 		</dependency>
-		
+
 		<!-- Hibernate -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.12.Final</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -104,6 +104,14 @@
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 		</dependency>
+
+		<!-- Mockito -->
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>

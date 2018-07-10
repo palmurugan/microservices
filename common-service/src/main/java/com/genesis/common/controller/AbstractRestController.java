@@ -11,11 +11,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.genesis.common.service.IGenericService;
+import com.genesis.common.validator.ValidationGroup;
 
 /**
  * 
@@ -31,7 +33,7 @@ public abstract class AbstractRestController<E, K> {
 	}
 
 	@RequestMapping(method = POST)
-	public ResponseEntity<E> create(@Valid @RequestBody E entity) {
+	public ResponseEntity<E> create(@Validated(ValidationGroup.ValidateWhileCreate.class) @RequestBody E entity) {
 		return new ResponseEntity<>(genericService.saveOrUpdate(entity), HttpStatus.CREATED);
 	}
 
