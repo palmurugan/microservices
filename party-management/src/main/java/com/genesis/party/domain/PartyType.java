@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 import com.genesis.common.annotation.Unique;
 import com.genesis.common.domain.Auditable;
+import com.genesis.common.validator.ValidationGroup;
 import com.genesis.party.service.impl.PartyTypeService;
 
 /**
@@ -37,7 +38,8 @@ public class PartyType extends Auditable<String> implements Serializable {
 	@Column(name = "name", nullable = false, unique = true)
 	@NotNull(message = "party type name should not be null")
 	@NotBlank(message = "party type name should not be empty")
-	@Unique(service = PartyTypeService.class, fieldName = "name", message = "Party type name should not be duplicate")
+	@Unique(groups = {
+			ValidationGroup.ValidateWhileCreate.class }, service = PartyTypeService.class, fieldName = "name", message = "Party type name should not be duplicate")
 	private String name;
 
 	public PartyType(Long partyTypeId) {

@@ -1,15 +1,20 @@
 package com.genesis.party.service;
 
-import java.util.Optional;
+import static org.mockito.Mockito.when;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.genesis.party.domain.PartyType;
+import com.genesis.party.dao.PartyTypeRepository;
+import com.genesis.party.service.impl.PartyTypeService;
+import com.genesis.party.util.MockConstants;
 
 /**
  * 
@@ -20,36 +25,22 @@ import com.genesis.party.domain.PartyType;
 @SpringBootTest
 public class PartyTypeServiceTest {
 
-	@Autowired
-	private IPartyTypeService partyTypeService;
+	@InjectMocks
+	private PartyTypeService partyTypeService;
 
-	private Long partyTypeId;
+	@Mock
+	PartyTypeRepository repository;
 
-	@Test
-	public void testCreate() {
-		PartyType partyType = partyTypeService.saveOrUpdate(getTestData());
-		Assert.assertEquals("test-partyType", partyType.getName());
-
-		this.partyTypeId = partyType.getPartyTypeId();
+	@Before
+	public void setup() {
+		MockitoAnnotations.initMocks(this);
 	}
 
 	@Test
-	public void testUpdate() {
-		Optional<PartyType> partyTypeOptional = partyTypeService.get(this.partyTypeId);
-		PartyType partyTypeUpdated = partyTypeOptional.get();
-		partyTypeUpdated.setName("test-partyType-updated");
-
-		PartyType partyType = partyTypeService.saveOrUpdate(partyTypeUpdated);
-		Assert.assertEquals("test-partyType-updated", partyType.getName());
-	}
-
-	@Test
-	public void testRemove() {
-		partyTypeService.remove(this.partyTypeId);
-	}
-
-	private PartyType getTestData() {
-		return new PartyType("test-partyType");
+	public void testFieldValueExists() {
+		when(repository.existsByName(MockConstants.TESTDATA)).thenReturn(Boolean.TRUE);
+		Boolean exists = partyTypeService.fieldValueExists(MockConstants.TESTDATA, "email");
+		Assert.assertEquals(Boolean.TRUE, exists);
 	}
 
 }
