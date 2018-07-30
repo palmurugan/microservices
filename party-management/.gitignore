@@ -3,3 +3,7 @@
 /.classpath
 /.project
 /.springBeans
+
+/.DS_Store
+/.cache-main
+/.cache-tests
