@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'text-field',
   templateUrl: './textfield.component.html',
   styleUrls: ['textfield.component.css']
 })
-export class TextFieldComponent {
+export class TextFieldComponent implements OnInit {
 
-  private placeholder: string = 'First Name';
-  private value: string = '';
+ // @Input() name: string;
+  @Input() placeholder: string;
+
+  ngOnInit() {
+    console.log('started');
+  }
 }
