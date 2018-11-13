@@ -1,6 +1,6 @@
 package com.ms;
 
-import freemarker.template.Configuration;
+import com.ms.generator.pom.POMGenerator;
 
 /**
  * 
@@ -9,6 +9,6 @@ import freemarker.template.Configuration;
  */
 public class AppGenerator {
 	public static void main(String[] args) {
-		Configuration cfg = new Configuration(Configuration.VERSION_2_3_28);
+		new POMGenerator().generate("hai");
 	}
 }
