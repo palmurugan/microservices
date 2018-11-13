@@ -1,5 +1,7 @@
 package com.ms.generator;
 
+import com.ms.vo.MetaDataVO;
+
 /**
  * 
  * @author palmuruganc
@@ -7,5 +9,5 @@ package com.ms.generator;
  */
 public interface Generator {
 
-	Boolean generate(String data);
+	Boolean generate(MetaDataVO metaData);
 }
