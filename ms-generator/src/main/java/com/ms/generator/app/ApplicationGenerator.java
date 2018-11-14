@@ -21,6 +21,9 @@ import freemarker.template.TemplateException;
  */
 public class ApplicationGenerator extends BaseGenerator implements Generator {
 
+	private static final String BASE_SOURCE_PATH = "/src/main/java/com/msg/";
+	private static final String BASE_RESOURCE_PATH = "/src/main/resources/";
+
 	@Override
 	public Boolean generate(MetaDataVO metaData) {
 		String applicationName = metaData.getApplicationName();
@@ -42,22 +45,22 @@ public class ApplicationGenerator extends BaseGenerator implements Generator {
 	}
 
 	private String getPomLocation(String applicationName) {
-		return String.format(getBaseDir() + "%s%s", applicationName, "\\");
+		return String.format(getBaseDir() + "%s%s", applicationName, "/");
 	}
 
 	private String getApplicationClassLocation(String applicationName) {
-		return String.format(getBaseDir() + "%s%s", applicationName, "\\src\\main\\java\\com\\msg\\");
+		return String.format(getBaseDir() + "%s%s", applicationName, BASE_SOURCE_PATH);
 	}
 
 	private String getDomainClassLocation(String applicationName) {
-		return String.format(getBaseDir() + "%s%s", applicationName, "\\src\\main\\java\\com\\msg\\domain\\");
+		return String.format(getBaseDir() + "%s%s", applicationName, BASE_SOURCE_PATH + "domain/");
 	}
 
 	private String getApplicationPropertyLocation(String applicationName) {
-		return String.format(getBaseDir() + "%s%s", applicationName, "\\src\\main\\resources\\");
+		return String.format(getBaseDir() + "%s%s", applicationName, BASE_RESOURCE_PATH);
 	}
 
 	private String getBaseDir() {
-		return System.getProperty("user.dir") + "\\output\\";
+		return System.getProperty("user.dir") + "/output/";
 	}
 }
