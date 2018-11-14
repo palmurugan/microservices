@@ -1,7 +1,9 @@
 package com.ms.generator.app;
 
 
+import static com.ms.util.Templates.APPLICATION_PROPERTIES_TPL;
 import static com.ms.util.Templates.APPLICATION_TPL;
+import static com.ms.util.Templates.DOMAIN_CLASS_TPL;
 import static com.ms.util.Templates.POM_TPL;
 
 import java.io.IOException;
@@ -19,15 +21,18 @@ import freemarker.template.TemplateException;
  */
 public class ApplicationGenerator extends BaseGenerator implements Generator {
 
-	private static final String POM_LOCATION = "/Users/palmurugan/tmp/%s%s";
-	private static final String APPLICATION_CLASS_LOCATION = "/Users/palmurugan/tmp/%s%s";
-
 	@Override
 	public Boolean generate(MetaDataVO metaData) {
 		String applicationName = metaData.getApplicationName();
 		try {
 			generateCode(POM_TPL, getPomLocation(applicationName), "pom.xml", metaData);
 			generateCode(APPLICATION_TPL, getApplicationClassLocation(applicationName), applicationName + ".java",
+					metaData);
+			generateCode(DOMAIN_CLASS_TPL, getDomainClassLocation(applicationName),
+					metaData.getEntityDetails().getName() + ".java",
+					metaData);
+			generateCode(APPLICATION_PROPERTIES_TPL, getApplicationPropertyLocation(applicationName),
+					"application.properties",
 					metaData);
 		} catch (TemplateException | IOException e) {
 			e.printStackTrace();
@@ -37,11 +42,22 @@ public class ApplicationGenerator extends BaseGenerator implements Generator {
 	}
 
 	private String getPomLocation(String applicationName) {
-		return String.format(POM_LOCATION, applicationName, "/");
+		return String.format(getBaseDir() + "%s%s", applicationName, "\\");
 	}
 
 	private String getApplicationClassLocation(String applicationName) {
-		return String.format(APPLICATION_CLASS_LOCATION, applicationName, "/src/main/java/com/msg/");
+		return String.format(getBaseDir() + "%s%s", applicationName, "\\src\\main\\java\\com\\msg\\");
 	}
 
+	private String getDomainClassLocation(String applicationName) {
+		return String.format(getBaseDir() + "%s%s", applicationName, "\\src\\main\\java\\com\\msg\\domain\\");
+	}
+
+	private String getApplicationPropertyLocation(String applicationName) {
+		return String.format(getBaseDir() + "%s%s", applicationName, "\\src\\main\\resources\\");
+	}
+
+	private String getBaseDir() {
+		return System.getProperty("user.dir") + "\\output\\";
+	}
 }

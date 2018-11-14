@@ -1,4 +1,24 @@
 {
-    "author": "PalMurugan C",
-    "applicationName":"MyFirstApplication"
+  "author": "PalMurugan C",
+  "applicationName": "MyFirstApplication",
+  "datasource": "MYSQL",
+  "entityDetails": {
+    "name": "FirstEntity",
+    "attributes": [
+      {
+        "name": "id",
+        "primaryKey" : true,
+        "dataType": "Long",
+        "nullable": false,
+        "unique": true
+      },
+      {
+        "name": "name",
+        "primaryKey" : false,
+        "dataType": "String",
+        "nullable": "false",
+        "unique": "true"
+      }
+    ]
+  }
 }
