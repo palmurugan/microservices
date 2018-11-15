@@ -25,7 +25,9 @@ public abstract class BaseGenerator {
 			throws TemplateException, IOException {
 		Template template = prepareTemplate(templateName);
 		File file = new File(destination + fileName);
-		file.getParentFile().mkdirs();
+		if (destination.length() > 0 ) {
+			file.getParentFile().mkdirs();
+		}
 		try (Writer fileWriter = new FileWriter(file)) {
 			template.process(metaData, fileWriter);
 			fileWriter.flush();

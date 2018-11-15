@@ -28,7 +28,7 @@ public class ApplicationGenerator extends BaseGenerator implements Generator {
 	public Boolean generate(MetaDataVO metaData) {
 		String applicationName = metaData.getApplicationName();
 		try {
-			generateCode(POM_TPL, getPomLocation(applicationName), "pom.xml", metaData);
+			generateCode(POM_TPL, getLocationFromTemplate(POM_TPL), getFileNameFromTemplate(POM_TPL), metaData);
 			generateCode(APPLICATION_TPL, getApplicationClassLocation(applicationName), applicationName + ".java",
 					metaData);
 			generateCode(DOMAIN_CLASS_TPL, getDomainClassLocation(applicationName),
@@ -42,6 +42,15 @@ public class ApplicationGenerator extends BaseGenerator implements Generator {
 			return false;
 		}
 		return true;
+	}
+
+	private String getLocationFromTemplate(String tplLocation) {
+		return System.getProperty("user.dir") + "/output/" + tplLocation.substring(0, tplLocation.lastIndexOf("/"));
+	}
+
+	private String getFileNameFromTemplate(String tplLocation) {
+		String fileName = tplLocation.substring(tplLocation.lastIndexOf("/") + 1);
+		return fileName.substring(0, fileName.lastIndexOf("."));
 	}
 
 	private String getPomLocation(String applicationName) {
