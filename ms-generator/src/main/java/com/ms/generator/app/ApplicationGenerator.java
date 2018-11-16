@@ -1,6 +1,5 @@
 package com.ms.generator.app;
 
-
 import static com.ms.util.Templates.APPLICATION_PROPERTIES_TPL;
 import static com.ms.util.Templates.APPLICATION_TPL;
 import static com.ms.util.Templates.DOMAIN_CLASS_TPL;
@@ -28,15 +27,15 @@ public class ApplicationGenerator extends BaseGenerator implements Generator {
 	public Boolean generate(MetaDataVO metaData) {
 		String applicationName = metaData.getApplicationName();
 		try {
-			generateCode(POM_TPL, getLocationFromTemplate(POM_TPL), getFileNameFromTemplate(POM_TPL), metaData);
-			generateCode(APPLICATION_TPL, getApplicationClassLocation(applicationName), applicationName + ".java",
+			generateCode(POM_TPL, getLocationFromTemplate(POM_TPL, applicationName), getFileNameFromTemplate(POM_TPL),
 					metaData);
-			generateCode(DOMAIN_CLASS_TPL, getDomainClassLocation(applicationName),
-					metaData.getEntityDetails().getName() + ".java",
-					metaData);
-			generateCode(APPLICATION_PROPERTIES_TPL, getApplicationPropertyLocation(applicationName),
-					"application.properties",
-					metaData);
+			generateCode(APPLICATION_TPL, getLocationFromTemplate(APPLICATION_TPL, applicationName),
+					getFileNameFromTemplate(APPLICATION_TPL), metaData);
+			generateCode(DOMAIN_CLASS_TPL, getLocationFromTemplate(DOMAIN_CLASS_TPL, applicationName) + "/domain/",
+					metaData.getEntityDetails().getName() + getFileNameFromTemplate(DOMAIN_CLASS_TPL), metaData);
+			generateCode(APPLICATION_PROPERTIES_TPL,
+					getLocationFromTemplate(APPLICATION_PROPERTIES_TPL, applicationName),
+					getFileNameFromTemplate(APPLICATION_PROPERTIES_TPL), metaData);
 		} catch (TemplateException | IOException e) {
 			e.printStackTrace();
 			return false;
@@ -44,8 +43,9 @@ public class ApplicationGenerator extends BaseGenerator implements Generator {
 		return true;
 	}
 
-	private String getLocationFromTemplate(String tplLocation) {
-		return System.getProperty("user.dir") + "/output/" + tplLocation.substring(0, tplLocation.lastIndexOf("/"));
+	private String getLocationFromTemplate(String tplLocation, String applicationName) {
+		return System.getProperty("user.dir") + "/output/" + applicationName + "/"
+				+ tplLocation.substring(0, tplLocation.lastIndexOf("/"));
 	}
 
 	private String getFileNameFromTemplate(String tplLocation) {
