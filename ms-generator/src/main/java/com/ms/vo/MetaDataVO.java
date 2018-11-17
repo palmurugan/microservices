@@ -21,6 +21,8 @@ public class MetaDataVO implements Serializable {
 
 	private EntityDetails entityDetails;
 
+	private String packageName;
+
 	public String getApplicationName() {
 		return applicationName;
 	}
@@ -43,6 +45,14 @@ public class MetaDataVO implements Serializable {
 
 	public void setEntityDetails(EntityDetails entityDetails) {
 		this.entityDetails = entityDetails;
+	}
+
+	public String getPackageName() {
+		return packageName;
+	}
+
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
 	}
 
 }

@@ -2,6 +2,7 @@
   "author": "PalMurugan C",
   "applicationName": "MyFirstApplication",
   "datasource": "MYSQL",
+  "packageName" : "com.msg",
   "entityDetails": {
     "name": "FirstEntity",
     "attributes": [

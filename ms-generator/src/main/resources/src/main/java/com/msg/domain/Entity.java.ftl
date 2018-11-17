@@ -1,4 +1,4 @@
-package com.genesis.party.domain;
+package ${packageName}.domain;
 
 import java.io.Serializable;
 
