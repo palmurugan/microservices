@@ -8,6 +8,8 @@ public class EntityDetails {
 
 	private List<Attributes> attributes;
 
+	private List<Mapping> mappings;
+
 	public String getName() {
 		return name;
 	}
@@ -24,4 +26,11 @@ public class EntityDetails {
 		this.attributes = attributes;
 	}
 
+	public List<Mapping> getMappings() {
+		return mappings;
+	}
+
+	public void setMappings(List<Mapping> mappings) {
+		this.mappings = mappings;
+	}
 }

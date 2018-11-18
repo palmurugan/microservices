@@ -2,24 +2,64 @@
   "author": "PalMurugan C",
   "applicationName": "MyFirstApplication",
   "datasource": "MYSQL",
-  "packageName" : "com.msg",
-  "entityDetails": {
-    "name": "FirstEntity",
-    "attributes": [
-      {
-        "name": "id",
-        "primaryKey" : true,
-        "dataType": "Long",
-        "nullable": false,
-        "unique": true
-      },
-      {
-        "name": "name",
-        "primaryKey" : false,
-        "dataType": "String",
-        "nullable": "false",
-        "unique": "true"
-      }
-    ]
-  }
+  "packageName": "com.msg",
+  "entityDetails": [
+    {
+      "name": "Stock",
+      "attributes": [
+        {
+          "name": "id",
+          "primaryKey": true,
+          "dataType": "Long",
+          "nullable": false,
+          "unique": true
+        },
+        {
+          "name": "code",
+          "primaryKey": false,
+          "dataType": "String",
+          "nullable": false,
+          "unique": "true"
+        },{
+          "name": "color",
+          "primaryKey": false,
+          "dataType": "String",
+          "nullable": false,
+          "unique": "true"
+        }
+      ],
+      "mappings" : [{
+        "type" : "OneToMany",
+        "attributeName" : "StockDetail",
+        "joinColumn" : "stockId",
+        "placeHolder" : "stockDetails"
+      }]
+    },
+    {
+      "name": "StockDetail",
+      "attributes": [
+        {
+          "name": "id",
+          "primaryKey": true,
+          "dataType": "Long",
+          "nullable": false,
+          "unique": true
+        },
+        {
+          "name": "stockId",
+          "primaryKey": false,
+          "dataType": "Long",
+          "nullable": false,
+          "unique": false
+        },
+        {
+          "name": "price",
+          "primaryKey": false,
+          "dataType": "Integer",
+          "nullable": false,
+          "unique": "true"
+        }
+      ]
+    }
+  ]
 }

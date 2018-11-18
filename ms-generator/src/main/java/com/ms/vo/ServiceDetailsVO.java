@@ -1,15 +1,8 @@
 package com.ms.vo;
 
 import java.io.Serializable;
-import java.util.List;
 
-/**
- * 
- * @author palmurugan
- * 
- *         This class will have all the metadata related properties
- */
-public class MetaDataVO implements Serializable {
+public class ServiceDetailsVO implements Serializable {
 
 	/**
 	 * 
@@ -20,9 +13,17 @@ public class MetaDataVO implements Serializable {
 
 	private String applicationName;
 
-	private List<EntityDetails> entityDetails;
+	private EntityDetails entityDetails;
 
 	private String packageName;
+
+	public ServiceDetailsVO(String author, String applicationName, EntityDetails entityDetails, String packageName) {
+		super();
+		this.author = author;
+		this.applicationName = applicationName;
+		this.entityDetails = entityDetails;
+		this.packageName = packageName;
+	}
 
 	public String getApplicationName() {
 		return applicationName;
@@ -40,11 +41,11 @@ public class MetaDataVO implements Serializable {
 		this.author = author;
 	}
 
-	public List<EntityDetails> getEntityDetails() {
+	public EntityDetails getEntityDetails() {
 		return entityDetails;
 	}
 
-	public void setEntityDetails(List<EntityDetails> entityDetails) {
+	public void setEntityDetails(EntityDetails entityDetails) {
 		this.entityDetails = entityDetails;
 	}
 
