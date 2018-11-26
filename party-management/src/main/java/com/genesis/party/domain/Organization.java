@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.genesis.common.domain.Auditable;
@@ -17,45 +15,44 @@ import com.genesis.common.domain.Auditable;
 @Table(name = "organization")
 public class Organization extends Auditable<String> implements Serializable {
 
-    /**
-     * 
-     */
-    private static final long serialVersionUID = 1L;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "organization_id")
-    private Long organizationId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "organization_id")
+	private Long organizationId;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "party_id")
-    private Party party;
+	@Column(name = "party_id")
+	private Long partyId;
 
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    public Long getOrganizationId() {
-        return organizationId;
-    }
+	public Long getOrganizationId() {
+		return organizationId;
+	}
 
-    public void setOrganizationId(Long organizationId) {
-        this.organizationId = organizationId;
-    }
+	public void setOrganizationId(Long organizationId) {
+		this.organizationId = organizationId;
+	}
 
-    public Party getParty() {
-        return party;
-    }
+	public Long getPartyId() {
+		return partyId;
+	}
 
-    public void setParty(Party party) {
-        this.party = party;
-    }
+	public void setPartyId(Long partyId) {
+		this.partyId = partyId;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    // TODO will add more field later
+	public void setName(String name) {
+		this.name = name;
+	}
+	// TODO will add more field later
 }
