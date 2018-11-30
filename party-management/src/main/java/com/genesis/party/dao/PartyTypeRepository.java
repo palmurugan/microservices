@@ -8,5 +8,7 @@ import com.genesis.party.domain.PartyType;
 @Repository
 public interface PartyTypeRepository extends PagingAndSortingRepository<PartyType, Long> {
 
+	public PartyType findByName(String name);
+
 	public boolean existsByName(String name);
 }

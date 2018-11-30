@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.genesis.common.domain.Auditable;
 
 @Entity
-@Table(name = "organization")
+@Table(name = "ORGANIZATION")
 public class Organization extends Auditable<String> implements Serializable {
 
 	/**
@@ -22,13 +22,13 @@ public class Organization extends Auditable<String> implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "organization_id")
+	@Column(name = "ORGANIZATION_ID")
 	private Long organizationId;
 
-	@Column(name = "party_id")
+	@Column(name = "PARTY_ID")
 	private Long partyId;
 
-	@Column(name = "name")
+	@Column(name = "NAME")
 	private String name;
 
 	public Long getOrganizationId() {

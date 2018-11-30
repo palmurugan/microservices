@@ -1,5 +1,7 @@
 package com.genesis.party.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,5 +28,10 @@ public class PartyTypeService extends GenericServiceImpl<PartyType, Long> implem
 	@Override
 	public boolean fieldValueExists(Object value, String fieldName) {
 		return partyTypeRepository.existsByName(value.toString());
+	}
+
+	@Override
+	public Optional<PartyType> findByName(String name) {
+		return Optional.of(partyTypeRepository.findByName(name));
 	}
 }
