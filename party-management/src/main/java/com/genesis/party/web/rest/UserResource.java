@@ -17,7 +17,7 @@ import com.genesis.party.service.IUserService;
  * @author palmuruganc
  *
  */
-@RestController("userManageResource")
+@RestController
 @RequestMapping("/users")
 public class UserResource {
 
@@ -37,4 +37,5 @@ public class UserResource {
 	public Page<User> getAll(Pageable pageable) {
 		return userService.getAll(pageable);
 	}
+
 }

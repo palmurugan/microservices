@@ -1,0 +1,9 @@
+/.settings/
+/target/
+/.classpath
+/.project
+/.springBeans
+/.cache-main
+/.cache-tests
+/**/**/.DS_Store
+/.DS_Store

@@ -3,13 +3,16 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-  <changeSet id="06_create_user-15-03-2018" author="pmurugan">
-    <createTable tableName="USER">
+  <changeSet id="06_disable-keys" author="pmurugan" runAlways="true">
+      <sql>SET FOREIGN_KEY_CHECKS=0;</sql>
+  </changeSet>
+  <changeSet id="07_create_user-15-03-2018" author="pmurugan">
+    <createTable tableName="USERS">
       <column name="ID" type="int" autoIncrement="true">
         <constraints primaryKey="true" nullable="false" />
       </column>
       <column name="PARTY_ID" type="int">
-        <constraints nullable="false" foreignKeyName="fk_party_id"
+        <constraints nullable="false" foreignKeyName="fk_user_party_id"
           references="PARTY(PARTY_ID)" />
       </column>
       <column name="USER_NAME" type="varchar(150)">

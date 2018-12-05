@@ -1,11 +1,11 @@
 {
   "author": "PalMurugan C",
-  "applicationName": "MyFirstApplication",
+  "applicationName": "authorization-service",
   "datasource": "MYSQL",
-  "packageName": "com.msg",
+  "packageName": "com.genesis.authorization",
   "entityDetails": [
     {
-      "name": "Stock",
+      "name": "PermissionSet",
       "attributes": [
         {
           "name": "id",
@@ -15,28 +15,16 @@
           "unique": true
         },
         {
-          "name": "code",
-          "primaryKey": false,
-          "dataType": "String",
-          "nullable": false,
-          "unique": "true"
-        },{
-          "name": "color",
+          "name": "name",
           "primaryKey": false,
           "dataType": "String",
           "nullable": false,
           "unique": "true"
         }
-      ],
-      "mappings" : [{
-        "type" : "OneToMany",
-        "attributeName" : "StockDetail",
-        "joinColumn" : "stockId",
-        "placeHolder" : "stockDetails"
-      }]
+      ]
     },
     {
-      "name": "StockDetail",
+      "name": "Permissions",
       "attributes": [
         {
           "name": "id",
@@ -46,18 +34,24 @@
           "unique": true
         },
         {
-          "name": "stockId",
+          "name": "permissionSetId",
           "primaryKey": false,
           "dataType": "Long",
           "nullable": false,
           "unique": false
         },
         {
-          "name": "price",
+          "name": "permission",
           "primaryKey": false,
-          "dataType": "Integer",
+          "dataType": "String",
           "nullable": false,
-          "unique": "true"
+          "unique": "false"
+        },{
+          "name": "scope",
+          "primaryKey": false,
+          "dataType": "String",
+          "nullable": false,
+          "unique": "false"
         }
       ]
     }

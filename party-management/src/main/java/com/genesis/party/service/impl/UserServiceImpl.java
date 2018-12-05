@@ -1,5 +1,7 @@
 package com.genesis.party.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +27,10 @@ public class UserServiceImpl extends GenericServiceImpl<User, Long> implements I
 
 	@Override
 	public User createUser(User user) {
-		partyTypeService.findByName(ApplicationConstants.USER).map(partyType -> {
+		Optional<User> users = partyTypeService.findByName(ApplicationConstants.USER).map(partyType -> {
 			user.setPartyId(partyType.getPartyTypeId());
 			return user;
 		});
-		return userRepository.save(user);
+		return userRepository.save(users.get());
 	}
 }

@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import com.genesis.common.domain.Auditable;
 
 @Entity
-@Table(name = "USER")
+@Table(name = "USERS")
 public class User extends Auditable<String> implements Serializable {
 
 	/**
@@ -28,7 +28,7 @@ public class User extends Auditable<String> implements Serializable {
 	@Column(name = "PARTY_ID", nullable = false)
 	private Long partyId;
 
-	@Column(name = "USERNAME", nullable = false)
+	@Column(name = "USER_NAME", nullable = false)
 	private String userName;
 
 	@Column(name = "PASSWORD", nullable = false)
