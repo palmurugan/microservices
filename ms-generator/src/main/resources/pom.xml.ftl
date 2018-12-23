@@ -50,6 +50,15 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		
 		<!-- MYSQL -->
 		<dependency>
 			<groupId>mysql</groupId>

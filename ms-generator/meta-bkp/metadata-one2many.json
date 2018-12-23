@@ -25,9 +25,9 @@
 			"mappings": [
 				{
 					"type": "OneToMany",
-					"entityName" : "Role",
-					"placeHolder" : "roles",
-					"joinColumn" : "userId"
+					"entityName": "Role",
+					"placeHolder": "roles",
+					"joinColumn": "userId"
 				}
 			]
 		},

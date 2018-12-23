@@ -1,0 +1,59 @@
+{
+  "author": "PalMurugan C",
+  "applicationName": "authorization-service",
+  "datasource": "MYSQL",
+  "packageName": "com.genesis.authorization",
+  "entityDetails": [
+    {
+      "name": "PermissionSet",
+      "attributes": [
+        {
+          "name": "id",
+          "primaryKey": true,
+          "dataType": "Long",
+          "nullable": false,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "primaryKey": false,
+          "dataType": "String",
+          "nullable": false,
+          "unique": "true"
+        }
+      ]
+    },
+    {
+      "name": "Permissions",
+      "attributes": [
+        {
+          "name": "id",
+          "primaryKey": true,
+          "dataType": "Long",
+          "nullable": false,
+          "unique": true
+        },
+        {
+          "name": "permissionSetId",
+          "primaryKey": false,
+          "dataType": "Long",
+          "nullable": false,
+          "unique": false
+        },
+        {
+          "name": "permission",
+          "primaryKey": false,
+          "dataType": "String",
+          "nullable": false,
+          "unique": "false"
+        },{
+          "name": "scope",
+          "primaryKey": false,
+          "dataType": "String",
+          "nullable": false,
+          "unique": "false"
+        }
+      ]
+    }
+  ]
+}

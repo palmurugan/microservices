@@ -20,10 +20,10 @@ import com.genesis.common.domain.Auditable;
 import com.genesis.common.validator.ValidationGroup;
 <#if entityDetails.mappings?has_content>
 <#list entityDetails.mappings as mapping>
-import ${packageName}.domain.${mapping.attributeName};
+import ${packageName}.domain.${mapping.entityName};
 </#list>
 </#if>
-
+import lombok.Data;
 /**
  * 
  * @author ${author}
@@ -31,6 +31,7 @@ import ${packageName}.domain.${mapping.attributeName};
  */
 @Entity
 @Table(name = "${entityDetails.name}")
+@Data
 public class ${entityDetails.name} implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,29 +47,8 @@ public class ${entityDetails.name} implements Serializable {
     <#list entityDetails.mappings as mapping>
     @${mapping.type}(cascade=CascadeType.ALL)
     @JoinColumn(name="${mapping.joinColumn}")
-    private Set<${mapping.attributeName}> ${mapping.placeHolder};	
+    private Set<${mapping.entityName}> ${mapping.placeHolder};	
     </#list>
     </#if>
     
-    <#list entityDetails.attributes as attribute> 
-	public ${attribute.dataType} get${attribute.name?capitalize}() {
-		return ${attribute.name};
-	}
-	
-	public void set${attribute.name?capitalize}(${attribute.dataType} ${attribute.name}) {
-		this.${attribute.name} = ${attribute.name};
-	}
-    </#list>
-    
-    <#if entityDetails.mappings?has_content>
-    <#list entityDetails.mappings as mapping>
-    public Set<${mapping.attributeName}> get${mapping.placeHolder?capitalize}() {
-		return ${mapping.placeHolder};
-	}
-	
-	public void set${mapping.placeHolder?capitalize}(Set<${mapping.attributeName}> ${mapping.placeHolder}) {
-		this.${mapping.placeHolder} = ${mapping.placeHolder};
-	}
-    </#list>
-    </#if>
 }
