@@ -22,7 +22,7 @@ import com.genesis.party.service.impl.PartyRelationshipTypeService;
  */
 
 @Entity
-@Table(name = "party_relationship_type")
+@Table(name = "PARTY_RELATIONSHIP_TYPE")
 public class PartyRelationshipType extends Auditable<String> implements Serializable {
 
     /**
@@ -32,10 +32,10 @@ public class PartyRelationshipType extends Auditable<String> implements Serializ
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "party_relationship_type_id", unique = true, nullable = false)
+	@Column(name = "PARTY_RELATIONSHIP_TYPE_ID", unique = true, nullable = false)
     private Long partyRelationshipTypeId;
 
-    @Column(name = "name", unique = true, nullable = false)
+	@Column(name = "NAME", unique = true, nullable = false)
 	@NotNull(message = "relationship type should not be null")
 	@NotBlank(message = "relationship type should not be empty")
 	@Unique(service = PartyRelationshipTypeService.class, fieldName = "name", message = "Party relationship type already exists")

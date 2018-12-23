@@ -22,7 +22,7 @@ import com.genesis.party.service.impl.PartyTypeService;
  *
  */
 @Entity
-@Table(name = "party_type")
+@Table(name = "PARTY_TYPE")
 public class PartyType extends Auditable<String> implements Serializable {
 
 	/**
@@ -32,10 +32,10 @@ public class PartyType extends Auditable<String> implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "party_type_id", unique = true, nullable = false)
+	@Column(name = "PARTY_TYPE_ID", unique = true, nullable = false)
 	private Long partyTypeId;
 
-	@Column(name = "name", nullable = false, unique = true)
+	@Column(name = "NAME", nullable = false, unique = true)
 	@NotNull(message = "party type name should not be null")
 	@NotBlank(message = "party type name should not be empty")
 	@Unique(groups = {

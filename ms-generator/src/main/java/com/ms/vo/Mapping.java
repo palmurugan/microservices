@@ -16,7 +16,7 @@ public class Mapping implements Serializable {
 
 	private String type;
 
-	private String attributeName;
+	private String entityName;
 
 	private String placeHolder;
 
@@ -30,12 +30,12 @@ public class Mapping implements Serializable {
 		this.type = type;
 	}
 
-	public String getAttributeName() {
-		return attributeName;
+	public String getEntityName() {
+		return entityName;
 	}
 
-	public void setAttributeName(String attributeName) {
-		this.attributeName = attributeName;
+	public void setEntityName(String entityName) {
+		this.entityName = entityName;
 	}
 
 	public String getJoinColumn() {

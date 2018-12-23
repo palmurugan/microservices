@@ -19,7 +19,7 @@ import com.genesis.common.domain.Auditable;
  *
  */
 @Entity
-@Table(name = "party")
+@Table(name = "PARTY")
 public class Party extends Auditable<String> implements Serializable {
 
     /**
@@ -29,11 +29,11 @@ public class Party extends Auditable<String> implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "party_id", unique = true, nullable = false)
+	@Column(name = "PARTY_ID", unique = true, nullable = false)
     private Long partyId;
 
 	@ManyToOne()
-    @JoinColumn(name = "party_type_id")
+	@JoinColumn(name = "PARTY_TYPE_ID")
     private PartyType partyType;
 
     public Party() {
