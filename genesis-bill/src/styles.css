@@ -1,0 +1,20 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    margin: 0;
+    font-family: Roboto, sans-serif;
+}
+
+table {
+  width: 100%;
+}
+
+body .ui-inputtext {
+  width: 100% !important;
+}
+.ui-calendar {
+  width: 100%;
+}
+body .ui-card {
+  margin-top: 5px;
+}

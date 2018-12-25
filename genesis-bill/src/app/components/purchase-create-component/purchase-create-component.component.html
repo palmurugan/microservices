@@ -1,0 +1,76 @@
+<p-card>
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-4">
+      <div class="ui-g-4">
+        Supplier Name
+      </div>
+      <div class="ui-g-8">
+        <input pInputText type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget" />
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+      <div class="ui-g-4">
+        Invoice Date
+      </div>
+      <div class="ui-g-8">
+        <p-calendar [(ngModel)]="date1"></p-calendar>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-4">
+      <div class="ui-g-10">
+        <address>Billing Address</address>
+        <address>Kerala</address>
+      </div>
+    </div>
+  </div>
+</p-card>
+
+<p-card>
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-4">
+      Item Name
+    </div>
+    <div class="ui-g-12 ui-md-2">
+      Unit
+    </div>
+    <div class="ui-g-12 ui-md-1">
+      Qty
+    </div>
+    <div class="ui-g-12 ui-md-1">
+      Price
+    </div>
+    <div class="ui-g-12 ui-md-1">
+      Disc
+    </div>
+    <div class="ui-g-12 ui-md-1">
+      Tax
+    </div>
+    <div class="ui-g-12 ui-md-2">
+        Action
+    </div>
+  </div>
+
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-4">
+      <input placeholder="Product" pInputText type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget" />
+    </div>
+    <div class="ui-g-12 ui-md-2">
+      <input pInputText type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget" />
+    </div>
+    <div class="ui-g-12 ui-md-1">
+      <input pInputText type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget" />
+    </div>
+    <div class="ui-g-12 ui-md-1">
+      <input pInputText type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget" />
+    </div>
+    <div class="ui-g-12 ui-md-1">
+      <input pInputText type="text" placeholder="Disc. %" class="ui-inputtext ui-corner-all ui-state-default ui-widget" />
+    </div>
+    <div class="ui-g-12 ui-md-1">
+      <input pInputText type="text" class="ui-inputtext ui-corner-all ui-state-default ui-widget" />
+    </div>
+    <div class="ui-g-12 ui-md-2">
+        <p-button label="Add"></p-button>
+    </div>
+  </div>
+</p-card>
