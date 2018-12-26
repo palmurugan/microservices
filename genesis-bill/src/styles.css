@@ -5,6 +5,13 @@ body {
     font-family: Roboto, sans-serif;
 }
 
+.mat-toolbar-multiple-rows {
+  min-height: 45px !important;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+  height: 45px !important;
+}
+
 table {
   width: 100%;
 }
@@ -22,4 +29,8 @@ body .ui-dropdown {
 }
 body .ui-card {
   margin-top: 5px;
+}
+
+table.mat-table {
+  margin-top: 5px !important;
 }
