@@ -24,7 +24,8 @@ import {
     CodeHighlighterModule,
     MenubarModule,
     CardModule,
-    ChartModule
+    ChartModule,
+    KeyFilterModule
 } from 'primeng/primeng';
 
 @NgModule({
@@ -52,7 +53,8 @@ import {
         CodeHighlighterModule,
         MenubarModule,
         CardModule,
-        ChartModule
+        ChartModule,
+        KeyFilterModule
     ],
     exports: [
         InputTextModule,
@@ -78,7 +80,8 @@ import {
         CodeHighlighterModule,
         MenubarModule,
         CardModule,
-        ChartModule
+        ChartModule,
+        KeyFilterModule
     ]
 })
 export class PrimeNgModule { }

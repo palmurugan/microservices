@@ -12,6 +12,11 @@ table {
 body .ui-inputtext {
   width: 100% !important;
 }
+
+body .ui-dropdown {
+  width: 100% !important;
+}
+
 .ui-calendar {
   width: 100%;
 }
