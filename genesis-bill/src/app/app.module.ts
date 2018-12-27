@@ -18,6 +18,7 @@ import { SalesComponentComponent } from './components/sales-component/sales-comp
 import { ReceiptComponentComponent } from './components/receipt-component/receipt-component.component';
 import { DashBoardComponentComponent } from './components/dash-board-component/dash-board-component.component';
 import { PurchaseCreateComponentComponent } from './components/purchase-create-component/purchase-create-component.component';
+import { BillingComponent } from './components/billing/billing.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PurchaseCreateComponentComponent } from './components/purchase-create-c
     SalesComponentComponent,
     ReceiptComponentComponent,
     DashBoardComponentComponent,
-    PurchaseCreateComponentComponent
+    PurchaseCreateComponentComponent,
+    BillingComponent
   ],
   imports: [
     BrowserModule,
